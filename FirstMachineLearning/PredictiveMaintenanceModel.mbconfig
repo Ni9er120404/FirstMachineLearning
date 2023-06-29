@@ -1,0 +1,736 @@
+﻿{
+  "Scenario": "Classification",
+  "DataSource": {
+    "Type": "TabularFile",
+    "Version": 1,
+    "FilePath": "C:\\Users\\Niger\\Downloads\\ai4i2020.csv",
+    "Delimiter": ",",
+    "DecimalMarker": ".",
+    "HasHeader": true,
+    "ColumnProperties": [
+      {
+        "ColumnName": "UDI",
+        "ColumnPurpose": "Ignore",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "ProductID",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "String",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "Type",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "String",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "Air temperatureK",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "ProcessTemperatureK",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "RotationalSpeedRpm",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "TorqueNm",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "ToolWearMin",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "MachineFailure",
+        "ColumnPurpose": "Label",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "TWF",
+        "ColumnPurpose": "Ignore",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "HDF",
+        "ColumnPurpose": "Ignore",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "PWF",
+        "ColumnPurpose": "Ignore",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "OSF",
+        "ColumnPurpose": "Ignore",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "RNF",
+        "ColumnPurpose": "Ignore",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 4
+      }
+    ]
+  },
+  "Environment": {
+    "Type": "LocalCPU",
+    "Version": 1
+  },
+  "RunHistory": {
+    "Version": 3,
+    "Type": "Result",
+    "Trials": [
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "LightGbmMulti",
+        "Score": 0.80869105353493131,
+        "RuntimeInSeconds": 16.575,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e3 * e4 * e7 * e12",
+          "e0": {
+            "OutputColumnNames": [
+              "Type"
+            ],
+            "InputColumnNames": [
+              "Type"
+            ]
+          },
+          "e1": {
+            "OutputColumnNames": [
+              "Air temperatureK",
+              "ProcessTemperatureK",
+              "RotationalSpeedRpm",
+              "TorqueNm",
+              "ToolWearMin"
+            ],
+            "InputColumnNames": [
+              "Air temperatureK",
+              "ProcessTemperatureK",
+              "RotationalSpeedRpm",
+              "TorqueNm",
+              "ToolWearMin"
+            ]
+          },
+          "e12": {
+            "OutputColumnName": "PredictedLabel",
+            "InputColumnName": "PredictedLabel"
+          },
+          "e2": {
+            "InputColumnName": "ProductID",
+            "OutputColumnName": "ProductID"
+          },
+          "e3": {
+            "InputColumnNames": [
+              "Type",
+              "Air temperatureK",
+              "ProcessTemperatureK",
+              "RotationalSpeedRpm",
+              "TorqueNm",
+              "ToolWearMin",
+              "ProductID"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e4": {
+            "OutputColumnName": "MachineFailure",
+            "InputColumnName": "MachineFailure",
+            "AddKeyValueAnnotationsAsText": false
+          },
+          "e7": {
+            "NumberOfLeaves": 1393,
+            "MinimumExampleCountPerLeaf": 27,
+            "LearningRate": 0.99999977667298645,
+            "NumberOfTrees": 2651,
+            "SubsampleFraction": 0.99999977667298645,
+            "MaximumBinCountPerFeature": 233,
+            "FeatureFraction": 0.978941618049128,
+            "L1Regularization": 2E-10,
+            "L2Regularization": 0.99999977667298645,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features"
+          },
+          "e10": {
+            "L1Regularization": 1.0,
+            "L2Regularization": 0.1,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features"
+          },
+          "e11": {
+            "L1Regularization": 1.0,
+            "L2Regularization": 0.1,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features"
+          },
+          "e5": {
+            "NumberOfLeaves": 4,
+            "MinimumExampleCountPerLeaf": 20,
+            "NumberOfTrees": 4,
+            "MaximumBinCountPerFeature": 255,
+            "FeatureFraction": 1.0,
+            "LearningRate": 0.099999999999999978,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features",
+            "DiskTranspose": false
+          },
+          "e6": {
+            "NumberOfTrees": 4,
+            "NumberOfLeaves": 4,
+            "FeatureFraction": 1.0,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features"
+          },
+          "e8": {
+            "L1Regularization": 1.0,
+            "L2Regularization": 1.0,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features"
+          },
+          "e9": {
+            "L1Regularization": 1.0,
+            "L2Regularization": 1.0,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "FastForestOva",
+        "Score": 0.8066280123852938,
+        "RuntimeInSeconds": 2.368,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e3 * e4 * e6 * e12",
+          "e0": {
+            "OutputColumnNames": [
+              "Type"
+            ],
+            "InputColumnNames": [
+              "Type"
+            ]
+          },
+          "e1": {
+            "OutputColumnNames": [
+              "Air temperatureK",
+              "ProcessTemperatureK",
+              "RotationalSpeedRpm",
+              "TorqueNm",
+              "ToolWearMin"
+            ],
+            "InputColumnNames": [
+              "Air temperatureK",
+              "ProcessTemperatureK",
+              "RotationalSpeedRpm",
+              "TorqueNm",
+              "ToolWearMin"
+            ]
+          },
+          "e12": {
+            "OutputColumnName": "PredictedLabel",
+            "InputColumnName": "PredictedLabel"
+          },
+          "e2": {
+            "InputColumnName": "ProductID",
+            "OutputColumnName": "ProductID"
+          },
+          "e3": {
+            "InputColumnNames": [
+              "Type",
+              "Air temperatureK",
+              "ProcessTemperatureK",
+              "RotationalSpeedRpm",
+              "TorqueNm",
+              "ToolWearMin",
+              "ProductID"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e4": {
+            "OutputColumnName": "MachineFailure",
+            "InputColumnName": "MachineFailure",
+            "AddKeyValueAnnotationsAsText": false
+          },
+          "e6": {
+            "NumberOfTrees": 4,
+            "NumberOfLeaves": 4,
+            "FeatureFraction": 1.0,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features"
+          },
+          "e10": {
+            "L1Regularization": 1.0,
+            "L2Regularization": 0.1,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features"
+          },
+          "e11": {
+            "L1Regularization": 1.0,
+            "L2Regularization": 0.1,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features"
+          },
+          "e5": {
+            "NumberOfLeaves": 4,
+            "MinimumExampleCountPerLeaf": 20,
+            "NumberOfTrees": 4,
+            "MaximumBinCountPerFeature": 255,
+            "FeatureFraction": 1.0,
+            "LearningRate": 0.099999999999999978,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features",
+            "DiskTranspose": false
+          },
+          "e7": {
+            "NumberOfLeaves": 4,
+            "MinimumExampleCountPerLeaf": 20,
+            "LearningRate": 1.0,
+            "NumberOfTrees": 4,
+            "SubsampleFraction": 1.0,
+            "MaximumBinCountPerFeature": 255,
+            "FeatureFraction": 1.0,
+            "L1Regularization": 2E-10,
+            "L2Regularization": 1.0,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features"
+          },
+          "e8": {
+            "L1Regularization": 1.0,
+            "L2Regularization": 1.0,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features"
+          },
+          "e9": {
+            "L1Regularization": 1.0,
+            "L2Regularization": 1.0,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "LightGbmMulti",
+        "Score": 0.63016408642133293,
+        "RuntimeInSeconds": 2.066,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e3 * e4 * e7 * e12",
+          "e0": {
+            "OutputColumnNames": [
+              "Type"
+            ],
+            "InputColumnNames": [
+              "Type"
+            ]
+          },
+          "e1": {
+            "OutputColumnNames": [
+              "Air temperatureK",
+              "ProcessTemperatureK",
+              "RotationalSpeedRpm",
+              "TorqueNm",
+              "ToolWearMin"
+            ],
+            "InputColumnNames": [
+              "Air temperatureK",
+              "ProcessTemperatureK",
+              "RotationalSpeedRpm",
+              "TorqueNm",
+              "ToolWearMin"
+            ]
+          },
+          "e12": {
+            "OutputColumnName": "PredictedLabel",
+            "InputColumnName": "PredictedLabel"
+          },
+          "e2": {
+            "InputColumnName": "ProductID",
+            "OutputColumnName": "ProductID"
+          },
+          "e3": {
+            "InputColumnNames": [
+              "Type",
+              "Air temperatureK",
+              "ProcessTemperatureK",
+              "RotationalSpeedRpm",
+              "TorqueNm",
+              "ToolWearMin",
+              "ProductID"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e4": {
+            "OutputColumnName": "MachineFailure",
+            "InputColumnName": "MachineFailure",
+            "AddKeyValueAnnotationsAsText": false
+          },
+          "e7": {
+            "NumberOfLeaves": 4,
+            "MinimumExampleCountPerLeaf": 20,
+            "LearningRate": 1.0,
+            "NumberOfTrees": 4,
+            "SubsampleFraction": 1.0,
+            "MaximumBinCountPerFeature": 254,
+            "FeatureFraction": 1.0,
+            "L1Regularization": 2E-10,
+            "L2Regularization": 1.0,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features"
+          },
+          "e10": {
+            "L1Regularization": 1.0,
+            "L2Regularization": 0.1,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features"
+          },
+          "e11": {
+            "L1Regularization": 1.0,
+            "L2Regularization": 0.1,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features"
+          },
+          "e5": {
+            "NumberOfLeaves": 4,
+            "MinimumExampleCountPerLeaf": 20,
+            "NumberOfTrees": 4,
+            "MaximumBinCountPerFeature": 255,
+            "FeatureFraction": 1.0,
+            "LearningRate": 0.099999999999999978,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features",
+            "DiskTranspose": false
+          },
+          "e6": {
+            "NumberOfTrees": 4,
+            "NumberOfLeaves": 4,
+            "FeatureFraction": 1.0,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features"
+          },
+          "e8": {
+            "L1Regularization": 1.0,
+            "L2Regularization": 1.0,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features"
+          },
+          "e9": {
+            "L1Regularization": 1.0,
+            "L2Regularization": 1.0,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "FastTreeOva",
+        "Score": 0.6169119441907972,
+        "RuntimeInSeconds": 2.347,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e3 * e4 * e5 * e12",
+          "e0": {
+            "OutputColumnNames": [
+              "Type"
+            ],
+            "InputColumnNames": [
+              "Type"
+            ]
+          },
+          "e1": {
+            "OutputColumnNames": [
+              "Air temperatureK",
+              "ProcessTemperatureK",
+              "RotationalSpeedRpm",
+              "TorqueNm",
+              "ToolWearMin"
+            ],
+            "InputColumnNames": [
+              "Air temperatureK",
+              "ProcessTemperatureK",
+              "RotationalSpeedRpm",
+              "TorqueNm",
+              "ToolWearMin"
+            ]
+          },
+          "e12": {
+            "OutputColumnName": "PredictedLabel",
+            "InputColumnName": "PredictedLabel"
+          },
+          "e2": {
+            "InputColumnName": "ProductID",
+            "OutputColumnName": "ProductID"
+          },
+          "e3": {
+            "InputColumnNames": [
+              "Type",
+              "Air temperatureK",
+              "ProcessTemperatureK",
+              "RotationalSpeedRpm",
+              "TorqueNm",
+              "ToolWearMin",
+              "ProductID"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e4": {
+            "OutputColumnName": "MachineFailure",
+            "InputColumnName": "MachineFailure",
+            "AddKeyValueAnnotationsAsText": false
+          },
+          "e5": {
+            "NumberOfLeaves": 4,
+            "MinimumExampleCountPerLeaf": 20,
+            "NumberOfTrees": 4,
+            "MaximumBinCountPerFeature": 254,
+            "FeatureFraction": 1.0,
+            "LearningRate": 0.099999999999999978,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features",
+            "DiskTranspose": false
+          },
+          "e10": {
+            "L1Regularization": 1.0,
+            "L2Regularization": 0.1,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features"
+          },
+          "e11": {
+            "L1Regularization": 1.0,
+            "L2Regularization": 0.1,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features"
+          },
+          "e6": {
+            "NumberOfTrees": 4,
+            "NumberOfLeaves": 4,
+            "FeatureFraction": 1.0,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features"
+          },
+          "e7": {
+            "NumberOfLeaves": 4,
+            "MinimumExampleCountPerLeaf": 20,
+            "LearningRate": 1.0,
+            "NumberOfTrees": 4,
+            "SubsampleFraction": 1.0,
+            "MaximumBinCountPerFeature": 255,
+            "FeatureFraction": 1.0,
+            "L1Regularization": 2E-10,
+            "L2Regularization": 1.0,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features"
+          },
+          "e8": {
+            "L1Regularization": 1.0,
+            "L2Regularization": 1.0,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features"
+          },
+          "e9": {
+            "L1Regularization": 1.0,
+            "L2Regularization": 1.0,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "LbfgsMaximumEntropyMulti",
+        "Score": 0.60148713257366015,
+        "RuntimeInSeconds": 1.301,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e3 * e4 * e9 * e12",
+          "e0": {
+            "OutputColumnNames": [
+              "Type"
+            ],
+            "InputColumnNames": [
+              "Type"
+            ]
+          },
+          "e1": {
+            "OutputColumnNames": [
+              "Air temperatureK",
+              "ProcessTemperatureK",
+              "RotationalSpeedRpm",
+              "TorqueNm",
+              "ToolWearMin"
+            ],
+            "InputColumnNames": [
+              "Air temperatureK",
+              "ProcessTemperatureK",
+              "RotationalSpeedRpm",
+              "TorqueNm",
+              "ToolWearMin"
+            ]
+          },
+          "e12": {
+            "OutputColumnName": "PredictedLabel",
+            "InputColumnName": "PredictedLabel"
+          },
+          "e2": {
+            "InputColumnName": "ProductID",
+            "OutputColumnName": "ProductID"
+          },
+          "e3": {
+            "InputColumnNames": [
+              "Type",
+              "Air temperatureK",
+              "ProcessTemperatureK",
+              "RotationalSpeedRpm",
+              "TorqueNm",
+              "ToolWearMin",
+              "ProductID"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e4": {
+            "OutputColumnName": "MachineFailure",
+            "InputColumnName": "MachineFailure",
+            "AddKeyValueAnnotationsAsText": false
+          },
+          "e9": {
+            "L1Regularization": 1.0,
+            "L2Regularization": 1.0,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features"
+          },
+          "e10": {
+            "L1Regularization": 1.0,
+            "L2Regularization": 0.1,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features"
+          },
+          "e11": {
+            "L1Regularization": 1.0,
+            "L2Regularization": 0.1,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features"
+          },
+          "e5": {
+            "NumberOfLeaves": 4,
+            "MinimumExampleCountPerLeaf": 20,
+            "NumberOfTrees": 4,
+            "MaximumBinCountPerFeature": 255,
+            "FeatureFraction": 1.0,
+            "LearningRate": 0.099999999999999978,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features",
+            "DiskTranspose": false
+          },
+          "e6": {
+            "NumberOfTrees": 4,
+            "NumberOfLeaves": 4,
+            "FeatureFraction": 1.0,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features"
+          },
+          "e7": {
+            "NumberOfLeaves": 4,
+            "MinimumExampleCountPerLeaf": 20,
+            "LearningRate": 1.0,
+            "NumberOfTrees": 4,
+            "SubsampleFraction": 1.0,
+            "MaximumBinCountPerFeature": 255,
+            "FeatureFraction": 1.0,
+            "L1Regularization": 2E-10,
+            "L2Regularization": 1.0,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features"
+          },
+          "e8": {
+            "L1Regularization": 1.0,
+            "L2Regularization": 1.0,
+            "LabelColumnName": "MachineFailure",
+            "FeatureColumnName": "Features"
+          }
+        }
+      }
+    ],
+    "Estimators": {
+      "e0": "OneHotEncoding",
+      "e1": "ReplaceMissingValues",
+      "e2": "FeaturizeText",
+      "e3": "Concatenate",
+      "e4": "MapValueToKey",
+      "e5": "FastTreeOva",
+      "e6": "FastForestOva",
+      "e7": "LightGbmMulti",
+      "e8": "LbfgsLogisticRegressionOva",
+      "e9": "LbfgsMaximumEntropyMulti",
+      "e10": "SdcaMaximumEntropyMulti",
+      "e11": "SdcaLogisticRegressionOva",
+      "e12": "MapKeyToValue"
+    },
+    "Schema": "e0 * e1 * e2 * e3 * e4 * (e5 + e6 + e7 + e8 + e9 + e10 + e11) * e12",
+    "MetricName": "MacroAccuracy",
+    "ModelFilePath": "C:\\Users\\Niger\\source\\repos\\FirstMachineLearning\\FirstMachineLearning\\PredictiveMaintenanceModel.mlnet"
+  },
+  "Type": "TrainingConfig",
+  "Version": 4,
+  "TrainingOption": {
+    "Version": 1,
+    "Type": "ClassificationTrainingOption",
+    "TrainingTime": 30,
+    "LabelColumn": "MachineFailure",
+    "ValidationOption": {
+      "Version": 0,
+      "Type": "CrossValidationValidationOption",
+      "NumberOfFolds": 5
+    }
+  }
+}
