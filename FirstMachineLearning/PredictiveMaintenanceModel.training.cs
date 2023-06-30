@@ -11,7 +11,7 @@ namespace FirstMachineLearning
 		public const char RetrainSeparatorChar = ',';
 		public const bool RetrainHasHeader = true;
 
-		private static readonly string[] inputColumnNames = new[]
+		private static readonly string[] _inputColumnNames = new[]
 		{
 			@"Type",
 			@"Air temperatureK",
@@ -68,7 +68,7 @@ namespace FirstMachineLearning
 					new InputOutputColumnPair(@"ToolWearMin", @"ToolWearMin")
 				}))
 				.Append(mlContext.Transforms.Text.FeaturizeText(inputColumnName: @"ProductID", outputColumnName: @"ProductID"))
-				.Append(mlContext.Transforms.Concatenate(@"Features", inputColumnNames))
+				.Append(mlContext.Transforms.Concatenate(@"Features", _inputColumnNames))
 				.Append(mlContext.Transforms.Conversion.MapValueToKey(outputColumnName: @"MachineFailure", inputColumnName: @"MachineFailure", addKeyValueAnnotationsAsText: false))
 				.Append(mlContext.MulticlassClassification.Trainers
 				.LightGbm(new LightGbmMulticlassTrainer.Options()

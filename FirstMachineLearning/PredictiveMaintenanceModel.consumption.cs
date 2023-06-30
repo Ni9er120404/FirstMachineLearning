@@ -4,7 +4,7 @@ namespace FirstMachineLearning
 {
 	public partial class PredictiveMaintenanceModel
 	{
-		private static readonly string MLNetModelPath = Path.GetFullPath("PredictiveMaintenanceModel.mlnet");
+		private static readonly string _mLNetModelPath = Path.GetFullPath("PredictiveMaintenanceModel.mlnet");
 
 		public static readonly Lazy<PredictionEngine<ModelInput, ModelOutput>> PredictEngine = new(CreatePredictEngine, true);
 
@@ -12,7 +12,7 @@ namespace FirstMachineLearning
 		{
 			MLContext mlContext = new();
 
-			ITransformer mlModel = mlContext.Model.Load(MLNetModelPath, out DataViewSchema _);
+			ITransformer mlModel = mlContext.Model.Load(_mLNetModelPath, out DataViewSchema _);
 
 			return mlContext.Model.CreatePredictionEngine<ModelInput, ModelOutput>(mlModel);
 		}
